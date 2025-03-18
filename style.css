@@ -1,0 +1,77 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+  background-color: #EEF0F4;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  height: 100dvh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.cart-container {
+  background-color: lightgrey;
+  border: 3px solid #000;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 450px;
+  width: 500px;
+  max-width: 350px;
+}
+
+.image-container img {
+  height: 100%;
+  width: 100%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.input-container input {
+  background-color: #DCE1EB;
+  border-color: transparent;
+  border-radius: 8px;
+  color: #432000;
+  font-size: 1.2rem;
+  text-align: center;
+  height: 40px;
+  width: 80%;
+  margin: 0 auto;
+  outline: none;
+}
+
+.input-container input:focus {
+  border: 2px solid #000;
+}
+
+.input-container button {
+  background-color: #AC485A;
+  border-color: transparent;
+  border-radius: 8px;
+  color: #FDFDFD;
+  font-size: 1.2rem;
+  height: 50px;
+  width: 80%;
+  margin: 0 auto;
+  outline: none;
+}
+
+.input-container button:focus,
+.input-container button:hover {
+  background-color: #CC445A;
+  border: 2px solid #000;
+}
