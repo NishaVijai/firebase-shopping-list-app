@@ -9,7 +9,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: space-around;
   font-size: 16px;
   height: 100dvh;
   overflow: hidden;
@@ -75,3 +76,14 @@ body {
   background-color: #CC445A;
   border: 2px solid #000;
 }
+
+/* Make placeholder text transition smoothly */
+#input-field::placeholder {
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+#input-field.placeholder-hidden::placeholder {
+  color: transparent; /* fades out */
+}
+
