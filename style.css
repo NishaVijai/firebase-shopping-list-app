@@ -87,3 +87,25 @@ body {
   color: transparent; /* fades out */
 }
 
+#notification {
+  margin: 1rem;
+  height: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.notification-visible {
+  color: red;
+  font-size: 1rem;
+  display: block;
+}
+
+.shopping-list-container {
+  background-color: #DCE1EB;
+  border: 2px solid #000;
+  border-radius: 8px;
+  height: 300px;
+  width: 500px;
+  max-width: 350px;
+  overflow-y: auto;
+}

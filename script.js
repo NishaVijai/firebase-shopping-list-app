@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, ref, push, onChildAdded, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
-// Firebase setup
+// ---------------- Firebase setup ----------------
 const appSettings = {
   databaseURL: "https://shopping-list-firebase-project-default-rtdb.europe-west1.firebasedatabase.app/"
 };
@@ -10,30 +10,41 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const shoppingListItemsInDB = ref(database, "shoppingListItems");
 
-// DOM elements
+// ---------------- DOM elements ----------------
 const inputFieldElement = document.getElementById("input-field");
 const addToCartButtonElement = document.getElementById("add-button");
 const shoppingListULelement = document.getElementById("shopping-list");
+const notificationElement = document.getElementById("notification");
 
 // ---------------- Placeholder fade on focus/blur ----------------
-// Add class to fade out placeholder
 inputFieldElement.addEventListener("focus", () => {
   inputFieldElement.classList.add("placeholder-hidden");
 });
 
-// Remove class if input is empty on blur
 inputFieldElement.addEventListener("blur", () => {
   if (inputFieldElement.value.trim() === "") {
     inputFieldElement.classList.remove("placeholder-hidden");
   }
 });
 
+// ---------------- Hide notification when user starts typing ----------------
+inputFieldElement.addEventListener("input", () => {
+  if (notificationElement.classList.contains("notification-visible")) {
+    notificationElement.classList.remove("notification-visible");
+    notificationElement.textContent = "";
+  }
+});
+
 // ---------------- Input validation ----------------
 const isInputFieldEmpty = (value) => {
-  if (value.length !== 0) return value;
-  console.log("Input is empty");
-  inputFieldElement.focus();
-  return null;
+  if (value.trim().length === 0) {
+    notificationElement.textContent = "Please enter an item!";
+    notificationElement.classList.add("notification-visible");
+    inputFieldElement.focus();
+    return null;
+  }
+
+  return value;
 };
 
 // ---------------- Add item to the UL with delete button ----------------
@@ -43,7 +54,6 @@ const addListItemToLiElement = (value, key) => {
   const li = document.createElement("li");
   li.textContent = value;
 
-  // Create delete button
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "❌";
   deleteButton.style.marginLeft = "10px";
